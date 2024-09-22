@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: ghostwhite;
+    color: darkcyan;
+    overflow: hidden; /* Hide scrollbar during loading */
+}
+
+h1 {
+    text-align: center;
+    margin: 100px auto 50px;
+    font-weight: 600;
+}
+
+form {
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    height: 80px;
+    background: #434989;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+}
+
+form input {
+    flex: 1;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: floralwhite;
+    font-size: 18px;
+    padding: 0 30px;
+}
+
+form button {
+    padding: 0 40px;
+    height: 100%;
+    background: #ff3929;
+    color: aliceblue;
+    font-size: 18px;
+    border: 0;
+    outline: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    cursor: pointer;
+}
+
+::placeholder {
+    color: #fff;
+    font-size: 18px;
+}
+
+#show-more-btn {
+    display: none; /* Initially hidden */
+    background: #ff3929;
+    color: azure;
+    border: 0;
+    outline: 0;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin: 10px auto 100px;
+    cursor: pointer;
+}
+
+#Search-result {
+    width: 80%;
+    margin: 100px auto 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 40px;
+}
+
+#Search-result img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#Search-result img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.image-gallery {
+    width: 80%;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive column layout */
+    grid-gap: 150px; /* Consistent gap */
+}
+
+.image-gallery img {
+    width: 130%; /* Use full width of grid cell */
+    height: 230px; /* Fixed height for uniformity */
+    object-fit: cover; /* Ensures the image covers its container */
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
+}
+
+/* Media Queries for Responsive Design */
+
+@media (max-width: 1200px) {
+    #Search-result {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 30px;
+    }
+
+    #Search-result img {
+        height: 200px;
+    }
+
+    form {
+        height: 70px;
+    }
+
+    form input {
+        font-size: 16px;
+        padding: 0 25px;
+    }
+
+    form button {
+        padding: 0 35px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    #Search-result {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+    #Search-result img {
+        height: 180px;
+    }
+
+    form {
+        height: 60px;
+    }
+
+    form input {
+        font-size: 15px;
+        padding: 0 20px;
+    }
+
+    form button {
+        padding: 0 30px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    #Search-result {
+        grid-template-columns: 1fr;
+        grid-gap: 15px;
+    }
+
+    #Search-result img {
+        height: 150px;
+    }
+
+    form {
+        height: 50px;
+    }
+
+    form input {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
+    form button {
+        padding: 0 20px;
+        font-size: 14px;
+    }
+
+    /* Show More button displayed when needed */
+    #show-more-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    form input {
+        font-size: 12px;
+        padding: 0 10px;
+    }
+
+    form button {
+        padding: 0 15px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    form input {
+        font-size: 11px;
+        padding: 0 8px;
+    }
+
+    form button {
+        padding: 0 12px;
+        font-size: 11px;
+    }
+}
+
+#pre-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.cardio-spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 6px solid #ff3929;
+    animation: cardio-spin 2s linear infinite;
+}
+
+@keyframes cardio-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
