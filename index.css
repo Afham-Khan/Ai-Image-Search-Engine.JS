@@ -1,3 +1,4 @@
+/* Base styles for all devices */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 * {
@@ -41,6 +42,10 @@ form input {
     padding: 0 30px;
 }
 
+input{
+    caret-color: red;
+}
+
 form button {
     padding: 0 40px;
     height: 100%;
@@ -75,7 +80,7 @@ form button {
     width: 80%;
     margin: 100px auto 50px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Flexible grid for responsiveness */
     grid-gap: 40px;
 }
 
@@ -97,13 +102,13 @@ form button {
     margin: 50px auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive column layout */
-    grid-gap: 150px; /* Consistent gap */
+    grid-gap: 40px;
 }
 
 .image-gallery img {
-    width: 130%; /* Use full width of grid cell */
-    height: 230px; /* Fixed height for uniformity */
-    object-fit: cover; /* Ensures the image covers its container */
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
     border-radius: 5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -113,112 +118,7 @@ form button {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
 }
 
-/* Media Queries for Responsive Design */
-
-@media (max-width: 1200px) {
-    #Search-result {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 30px;
-    }
-
-    #Search-result img {
-        height: 200px;
-    }
-
-    form {
-        height: 70px;
-    }
-
-    form input {
-        font-size: 16px;
-        padding: 0 25px;
-    }
-
-    form button {
-        padding: 0 35px;
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 992px) {
-    #Search-result {
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 20px;
-    }
-
-    #Search-result img {
-        height: 180px;
-    }
-
-    form {
-        height: 60px;
-    }
-
-    form input {
-        font-size: 15px;
-        padding: 0 20px;
-    }
-
-    form button {
-        padding: 0 30px;
-        font-size: 15px;
-    }
-}
-
-@media (max-width: 768px) {
-    #Search-result {
-        grid-template-columns: 1fr;
-        grid-gap: 15px;
-    }
-
-    #Search-result img {
-        height: 150px;
-    }
-
-    form {
-        height: 50px;
-    }
-
-    form input {
-        font-size: 14px;
-        padding: 0 15px;
-    }
-
-    form button {
-        padding: 0 20px;
-        font-size: 14px;
-    }
-
-    /* Show More button displayed when needed */
-    #show-more-btn {
-        display: block;
-    }
-}
-
-@media (max-width: 576px) {
-    form input {
-        font-size: 12px;
-        padding: 0 10px;
-    }
-
-    form button {
-        padding: 0 15px;
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 320px) {
-    form input {
-        font-size: 11px;
-        padding: 0 8px;
-    }
-
-    form button {
-        padding: 0 12px;
-        font-size: 11px;
-    }
-}
-
+/* Preloader */
 #pre-loader {
     position: fixed;
     top: 0;
@@ -250,5 +150,148 @@ form button {
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+/* ------------------- Media Queries for Responsive Design ------------------- */
+
+/* For Desktops (1200px and above) */
+@media (min-width: 1200px) {
+    #Search-result {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    }
+
+    #Search-result img {
+        height: 250px;
+    }
+}
+
+/* Large Tablets and Small Desktops (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    #Search-result {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        grid-gap: 30px;
+    }
+
+    #Search-result img {
+        height: 200px;
+    }
+
+    form {
+        height: 70px;
+    }
+
+    form input {
+        font-size: 16px;
+        padding: 0 25px;
+    }
+
+    form button {
+        padding: 0 35px;
+        font-size: 16px;
+    }
+}
+
+/* Tablets (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    #Search-result {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        grid-gap: 20px;
+    }
+
+    #Search-result img {
+        height: 180px;
+    }
+
+    form {
+        height: 60px;
+    }
+
+    form input {
+        font-size: 15px;
+        padding: 0 20px;
+    }
+
+    form button {
+        padding: 0 30px;
+        font-size: 15px;
+    }
+}
+
+/* Mobile (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    #Search-result {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        grid-gap: 15px;
+    }
+
+    #Search-result img {
+        height: 150px;
+    }
+
+    form {
+        height: 50px;
+    }
+
+    form input {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
+    form button {
+        padding: 0 20px;
+        font-size: 14px;
+    }
+
+    #show-more-btn {
+        display: block;
+        width: 100%;
+    }
+}
+
+/* Small Mobile (up to 575px) */
+@media (max-width: 575px) {
+    #Search-result {
+        grid-template-columns: 1fr; /* Single column */
+        grid-gap: 10px;
+    }
+
+    #Search-result img {
+        height: 120px;
+    }
+
+    form {
+        height: 50px;
+    }
+
+    form input {
+        font-size: 12px;
+        padding: 0 10px;
+    }
+
+    form button {
+        padding: 0 15px;
+        font-size: 12px;
+    }
+
+    #show-more-btn {
+        width: 100%;
+    }
+}
+
+/* Extra Small Mobile (up to 320px) */
+@media (max-width: 320px) {
+    form input {
+        font-size: 11px;
+        padding: 0 8px;
+    }
+
+    form button {
+        padding: 0 12px;
+        font-size: 11px;
+    }
+
+    h1 {
+        font-size: 24px;
     }
 }
